@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ ad.title }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ ad.title }}</h1>
+    <p>{{ ad.content|safe }}</p>
+    <p>{{ ad.author }}</p>
+    <p>{{ ad.date }}</p>
+  {% if ad.author == user %}
+    <a class="btn btn-outline-primary" href="/ads/{{ ad.pk }}/update" role="button">Редактировать</a>
+    <a class="btn btn-outline-danger" href="/ads/{{ ad.pk }}/delete" role="button">Удалить</a>
+  {% endif %}
+{% endblock content %}

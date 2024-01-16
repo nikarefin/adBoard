@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+  Все объявления
+{% endblock title %}
+{% block content %}
+  <h1>Редактирование объявления</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Сохранить объявление" />
+    <input class="btn btn-light" type="button" onclick="history.back();" value="Отменить"/>
+  </form>
+{% endblock content %}

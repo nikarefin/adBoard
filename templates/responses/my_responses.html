@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+  Мои отклики
+{% endblock title %}
+{% block content %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for response in responses %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+            <p>{{ response.text }}</p>
+          {% if response.status != 'accepted' %}
+            <form method="post" action="{% url 'accept_response' response.id %}">
+              {% csrf_token %}
+              <button type="submit">Принять</button>
+            </form>
+          {% endif %}
+            <a href="/my_responses/{{ response.pk }}/delete">
+              <button type="submit">Удалить</button>
+            </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

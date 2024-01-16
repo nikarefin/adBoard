@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+  Все объявления
+{% endblock title %}
+{% block content %}
+  <h1>Новое объявление</h1>
+ <form class="needs-validation" novalidate action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+   {{ form.media }}
+   {{ form.as_p }}
+      <input class="btn btn-primary" type="submit" value="Добавить объявление" />
+      <input class="btn btn-light" type="button" onclick="history.back();" value="Отменить"/>
+  </form>
+{% endblock content %}

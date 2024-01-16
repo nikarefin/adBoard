@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Ввод кода подтверждения</h1>
+  <p>Введите код подтверждения, отправленный на вашу почту {{ email }}:</p>
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="code" maxlength="4" required>
+    <button type="submit">Подтвердить</button>
+  </form>
+  <p>Не получили код? <a href="{% url 'resend_code' email %}">Отправить код повторно</a></p>
+{% endblock %}
